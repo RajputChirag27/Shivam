@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+        <link href="https://cdn.datatables.net/v/dt/dt-2.0.3/datatables.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+        <!-- Modal trigger button -->
+        <div class="container-fluid mt-5 d-flex justify-content-center align-items-center">
+
+            <button type="button" id="addCategory" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId">
+                Launch
+            </button>
+        </div>
+
+        <!-- Modal Body -->
+        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+        <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Modal title
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" data-parsley-validate id="foodForm">
+                            <div class="container-fluid">
+                                <label for="categoryName" class="form-label">Category Name</label>
+                                <input type="text" id="categoryName" name="categoryName" class="form-control" pattern="[a-zA-Z\s]+"
+                                    required>
+                                <label for="categoryDescription" class="form-label">Category Description</label>
+                                <textarea id="categoryDescription" name="categoryDescription" class="form-control" pattern="[a-zA-Z\s]+"
+                                    required></textarea>
+
+
+                                <label for="categoryActive">isActive</label>
+                                <input type="radio" name="categoryActive" id="categoryActive" value="true" checked>
+                                <label for="categoryActive">isNotActive</label>
+                                <input type="radio" name="categoryActive" id="categoryActive" value="false">
+                                <div class="">
+                                    <input type="date" class="form-control" name="launchDate" id="launchDate" required >
+                                </div>
+                            </div>
+                            <div class="my-3 d-flex justify-content-between">
+                                <h2>Item Form</h2>
+                                <button class="btn btn-primary" id="addRowBtn"type="button">+</button>
+                            </div>
+
+
+                            <!-- <div class="table-responsive"> -->
+                                <table class="table table-bordered">
+                                    <tbody id="formTableBody">
+                                        <tr>
+                                            <td> <label for="itemName0" class="form-label">Item Name</label>
+                                                <input type="text" id="itemName0" name="itemName0" class="form-control"
+                                                    pattern="[a-zA-Z\s]+" required>
+                                            </td>
+                                            <td>
+                                                <label for="itemDescription0" class="form-label">Item Description</label>
+                                                <input id="itemDescription0" name="itemDescription0" type="text" class="form-control"
+                                                    pattern="[a-zA-Z0-9\.\s]+" required>
+                                            </td>
+                                            <td>
+                                                <label for="foodType0">Food Type</label>
+                                                <select name="foodType0" id="foodType0" class="form-control mt-3"
+                                                    required>
+                                                    <option value="Veg" selected>Veg</option>
+                                                    <option value="Dairy Food" selected>Dairy Food</option>
+                                                    <option value="Sea Food" selected>Sea Food</option>
+                                                    <option value="Vegan" selected>Vegan</option>
+
+                                                </select>
+                                            </td>
+
+                                            <td>
+                                                <label for="price0">Price</label>
+                                                <input type="number" name="price0" id="price0" class="form-control" min="1" required>
+                                            </td>
+                                            <td>
+                                                <label for="discount0">Discount</label>
+                                                <input type="number" name="discount0" id="discount0" class="form-control" min="0" max="15" required>
+                                            </td>
+
+                                            <td>
+                                                <label for="GST0">GST</label>
+                                                <input type="number" name="GST0" id="GST0" class="form-control" min="0" required>
+                                            </td>
+
+                                            <td>
+                                                <label for="itemActive0">isActive</label>
+                                                <input type="radio" name="itemActive0" id="itemActive0" value="true"
+                                                    checked>
+                                                <label for="itemActive0">isNotActive</label>
+                                                <input type="radio" name="itemActive0" id="itemActive0" value="false">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" type="button" disabled>-</button>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="mb-3"></div>
+                                </table>
+
+                            <!-- </div> -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="submitBtn">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="table-responsive container">
+            <table class="table table-bordered" id="resultTable">
+                <thead>
+                    <tr>
+                        <th>View Items</th>
+                        <th>Category Name</th>
+                        <th>Category Description</th>
+                        <th>Active</th>
+                        <th>New Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.datatables.net/v/dt/dt-2.0.3/datatables.min.js"></script>
+
+        <script src="./dist/parsley.min.js"></script>
+
+        <script src="script.js"></script>
+</body>
+
+</html>
