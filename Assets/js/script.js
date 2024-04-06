@@ -129,6 +129,7 @@ $(document).ready(function () {
 
   // Delete Function
   $("#resultTable tbody").on("click", "#deleteRowBtn", function () {
+    if(confirm('Are you sure you want to Delete the row')){
     let tr = $(this).closest("tr");
     let dataArrIndex = categoryArray.findIndex(
       (item) => item.id === tr.attr("id")
@@ -139,6 +140,9 @@ $(document).ready(function () {
       display(categoryArray);
       console.log(categoryArray);
     }
+  } else{
+    return;
+  }
   });
 
   // Edit Function
