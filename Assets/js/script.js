@@ -268,19 +268,20 @@ function format(rowIds) {
     </tr>
     `;
   });
-
-  html += `<tr >
-  <th class="border-0">Total
+  html += 
+  `</tbody>
+  <tfoot><tr >
+  <th>Total
   </th>
-  <th colspan="2" class="border-0"></th>
-  <th class="border-0">Rs. ${totalPrice}
+  <th></th>
+  <th></th>
+  <th>Rs. ${totalPrice}
   </th>
-  <th class="border-0"></th>
-  <th class="border-0">Rs. ${totalDiscountedPrice}
+  <th></th>
+  <th>Rs. ${totalDiscountedPrice}
   </th>
-  <th colspan="2" class="border-0"></th>
-  </tr>
-  </tbody>
+  <th></th>
+  </tr></tfoot>
 </table>
 </div>`;
 
