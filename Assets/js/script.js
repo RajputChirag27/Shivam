@@ -11,7 +11,8 @@ $(document).ready(function () {
   
 
   //   Function for Adding Row in a Modal
-  function addItems(row) {
+  function addItems() {
+    let row = Date.now()
     $("#formTableBody").append(
       `
             <tr class="additionalItems">
@@ -29,10 +30,10 @@ $(document).ready(function () {
                 <select name="foodType0" id="foodType0" class="form-control mt-3"
                     required>
                     <option value="Veg" selected>Veg</option>
-                    <option value="Dairy Food" selected>Dairy Food</option>
-                    <option value="Sea Food" selected>Sea Food</option> 
-                    <option value="Vegan" selected>Vegan</option>
-
+                    <option value="Dairy Food" >Dairy Food</option>
+                    <option value="Sea Food" >Sea Food</option> 
+                    <option value="Vegan" >Vegan</option>
+                    <option value="Non-Veg" >Non-Veg</option>
                 </select>
             </td>
 
@@ -70,7 +71,7 @@ $(document).ready(function () {
   // Adding Row in Modal
   $("#addRowBtn").click(function () {
     if (countItems < 10) {
-      addItems(countItems);
+      addItems();
       countItems++;
     } else {
       alert("Can't Add More than 10 items");
@@ -169,7 +170,7 @@ $(document).ready(function () {
       .find('input[name="itemDescription0"]')
       .val(currentCategory.items[index].iDesc); 
       $(element)
-      .find('input[name="foodType0"]')
+      .find('#foodType0')
       .val(currentCategory.items[index].iFoodType); 
       $(element)
       .find('input[name="price0"]')
