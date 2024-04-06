@@ -262,23 +262,23 @@ function format(rowIds) {
     <td>${index + 1}</td>
     <td>${element.iName}</td>
     <td>${element.iFoodType}</td>
-    <td>${element.iPrice}</td>
-    <td>${element.iDiscount}</td>
-    <td>${discountedPrice}</td>
+    <td>Rs. ${element.iPrice}</td>
+    <td>${element.iDiscount}%</td>
+    <td>Rs. ${discountedPrice}</td>
     </tr>
     `;
   });
 
   html += `<tr >
-  <td class="border-0">Total
-  </td>
-  <td colspan="2" class="border-0"></td>
-  <td class="border-0">${totalPrice}
-  </td>
-  <td class="border-0"></td>
-  <td class="border-0">${totalDiscountedPrice}
-  </td>
-  <td colspan="2" class="border-0"></td>
+  <th class="border-0">Total
+  </th>
+  <th colspan="2" class="border-0"></th>
+  <th class="border-0">Rs. ${totalPrice}
+  </th>
+  <th class="border-0"></th>
+  <th class="border-0">Rs. ${totalDiscountedPrice}
+  </th>
+  <th colspan="2" class="border-0"></th>
   </tr>
   </tbody>
 </table>
